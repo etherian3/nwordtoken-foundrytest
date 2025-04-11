@@ -14,12 +14,12 @@ contract TestNigga is Test {
         nigga = new Nigga();
     }
 
-    function testNameAndSymbol() public {
+    function testNameAndSymbol() public view {
         assertEq(nigga.name(), "Nigga");
         assertEq(nigga.symbol(), "NIG");
     }
 
-    function testInitialSupply() public {
+    function testInitialSupply() public view {
         uint256 expected = 100000 * 10 ** nigga.decimals();
         assertEq(nigga.totalSupply(), expected);
         assertEq(nigga.balanceOf(owner), expected);
@@ -28,13 +28,19 @@ contract TestNigga is Test {
     function testTransfer() public {
         address recipient = address(0x123);
         uint256 amount = 1e18;
-        console.log("before transfer recipinet balance: ", nigga.balanceOf(recipient));
+        console.log(
+            "before transfer recipinet balance: ",
+            nigga.balanceOf(recipient)
+        );
         console.log("before transfer owner balance: ", nigga.balanceOf(owner));
 
         nigga.transfer(recipient, amount);
         assertEq(nigga.balanceOf(recipient), amount);
         assertEq(nigga.balanceOf(owner), nigga.totalSupply() - amount);
-        console.log("after transfer recipient balance: ", nigga.balanceOf(recipient));
+        console.log(
+            "after transfer recipient balance: ",
+            nigga.balanceOf(recipient)
+        );
         console.log("after transfer owner balance: ", nigga.balanceOf(owner));
     }
 }

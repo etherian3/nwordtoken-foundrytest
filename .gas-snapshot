@@ -1,0 +1,3 @@
+TestNigga:testInitialSupply() (gas: 19169)
+TestNigga:testNameAndSymbol() (gas: 18718)
+TestNigga:testTransfer() (gas: 62385)
